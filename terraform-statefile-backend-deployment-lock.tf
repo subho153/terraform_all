@@ -1,3 +1,4 @@
+
 terraform {
   required_providers {
     aws = {
@@ -10,7 +11,7 @@ provider "aws" {
   region = "us-east-1"
 }
 resource "aws_instance" "ec2" {
-  ami = "ami"
+  ami = "ami-05b10e"
   instance_type = "t2.micro"
   tags = {
     name="Ec2"
@@ -19,8 +20,9 @@ resource "aws_instance" "ec2" {
 
 terraform {
   backend "s3" {
-    bucket = "newbucket1235subho"
+    bucket = "terraformbucket197"
     key = "key/terraform.tfstate"
     region = "us-east-1"
+    dynamodb_table="dynamodb-state-locking"
   }
 }
